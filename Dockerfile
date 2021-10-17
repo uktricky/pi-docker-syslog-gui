@@ -43,7 +43,7 @@ COPY conf/create-user.php ${DOCUMENTROOT}
 # --------------- SCRIPT STARTUP -----------------
 COPY run.sh /
 # Amend Permissions to make it executable
-RUN chmod u+x run.sh
+RUN chmod u+x /run.sh
 # ------------- FIN SCRIPT STARTUP ---------------
 
 # OUVERTURE DU PORT HTTP
