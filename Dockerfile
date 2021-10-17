@@ -1,6 +1,6 @@
 # MÉTADONNÉES DE L'IMAGE
 FROM debian:stable-slim
-LABEL maintainer="Antoine GUYON"
+LABEL maintainer="ukTricky"
 
 
 # VARIABLES TEMPORAIRES
@@ -8,12 +8,10 @@ ARG APT_FLAGS="-q -y"
 ARG DOCUMENTROOT="/var/www/html"
 
 
-
 # --------------- DÉBUT COUCHE APACHE ---------------
 RUN apt-get update -y && \
     apt-get install ${APT_FLAGS} apache2
 # --------------- FIN COUCHE APACHE -----------------
-
 
 
 # --------------- DÉBUT COUCHE PHP ------------------
@@ -44,6 +42,8 @@ COPY conf/create-user.php ${DOCUMENTROOT}
 
 # --------------- SCRIPT STARTUP -----------------
 COPY run.sh /
+# Amend Permissions to make it executable
+RUN chmod u+x run.sh
 # ------------- FIN SCRIPT STARTUP ---------------
 
 # OUVERTURE DU PORT HTTP
